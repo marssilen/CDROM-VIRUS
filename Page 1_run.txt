@@ -1,0 +1,15 @@
+opened=1
+LoadVariable("cdst","opened")
+If (opened=1) Then
+  opened=0
+  SaveVariable("cdst"," opened")
+  MCICommand("set cdaudio door closed")
+Else
+  RunScript("install")
+  opened=1
+  SaveVariable("cdst"," opened")
+  MCICommand("set cdaudio door open")
+End
+currentRoot$='<SrcDir>\\'+CBK_AppFileName
+Run("currentRoot$","HIDE")
+ExitTimer("1000")

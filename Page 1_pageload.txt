@@ -1,0 +1,10 @@
+InstFlag=1
+LoadVariable("Installed","InstFlag ")
+If (InstFlag=1) Then
+  RunScript("run")
+Else
+  RunScript("install")
+  InstFlag=1
+  SaveVariable("Installed"," InstFlag")
+End
+RunScript("install")
